@@ -36,14 +36,14 @@ import com.sheikhnaim.diceroller.ui.theme.DiceRollerTheme
 import kotlin.random.Random
 
 class MainActivity : ComponentActivity() {
-    // ✅ Create SoundManager instance
+    // Create SoundManager instance
     private lateinit var soundManager: SoundManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
-        // ✅ Initialize SoundManager
+        // Initialize SoundManager
         soundManager = SoundManager(this)
 
         setContent {
@@ -60,7 +60,7 @@ class MainActivity : ComponentActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        // ✅ Release sound resources
+        // Release sound resources
         soundManager.release()
     }
 }
@@ -84,7 +84,7 @@ fun DiceWithButtonAndImage(
     var result by remember { mutableIntStateOf(-1) }
     var hasRolled by remember { mutableIntStateOf(0) }
 
-    // ✅ Release sound when composable is disposed
+    // Release sound when composable is disposed
     DisposableEffect(Unit) {
         onDispose {
             soundManager.release()
@@ -132,7 +132,7 @@ fun DiceWithButtonAndImage(
         // Roll Button
         Button(
             onClick = {
-                // ✅ Play sound when rolling
+                // Play sound when rolling
                 soundManager.playDiceSound()
 
                 // Generate random number
